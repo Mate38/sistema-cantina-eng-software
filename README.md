@@ -8,5 +8,5 @@ Para executar esse projeto execute:
 
 ## Dependências
 
-PHP >= 5.5
-MySQL Server >= 5.5.54
+* PHP >= 5.5
+* MySQL Server >= 5.5.54
