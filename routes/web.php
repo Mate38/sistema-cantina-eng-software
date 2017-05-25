@@ -12,10 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
-route::get('products', 'ProductController@index');
 
-route::get('@produto->id', 'ProductController@show');
+Auth::routes();
 
-route::get('create', 'ProductController@create');
+Route::get('/home', 'HomeController@index')->name('home');
