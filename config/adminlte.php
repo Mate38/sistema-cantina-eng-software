@@ -125,6 +125,21 @@ return [
             'icon' => 'barcode'
         ],
         [
+            'text'    => 'Produtos',
+            'icon'    => 'shopping-cart',
+            'submenu' => [
+                [
+                    'text' => 'Cadastrar novo',
+                    'url'  => '/produtos',
+                    'icon'    => 'plus',
+                ],
+                [
+                    'text'    => 'Excluir produto',
+                    'url'     => '/produtos/excluir',
+                ],
+            ],
+        ],
+        [
             'text' => 'Show my website',
             'url' => '/welcome',
             'target' => '_blank',
