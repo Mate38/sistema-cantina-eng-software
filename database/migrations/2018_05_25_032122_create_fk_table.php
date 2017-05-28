@@ -49,11 +49,6 @@ class CreateFkTable extends Migration
             $table->foreign('produtos_id')->references('id')->on('produtos');
         });
         
-        Schema::table('users', function(Blueprint $table)
-        {
-            $table->integer('funcionarios_id')->unsigned();
-            $table->foreign('funcionarios_id')->references('id')->on('funcionarios');
-        });
     }
 
     /**
