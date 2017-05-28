@@ -29,7 +29,7 @@
     <!-- form start -->
             <form class="form-horizontal" method="post" action="/produtos/salvar">
               <div class="box-body">
-
+              {!! csrf_field() !!}
                 <div class="form-group">
                   <label for="nome" class="col-sm-2 control-label">Nome</label>
                   <div class="col-sm-10">

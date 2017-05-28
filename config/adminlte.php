@@ -130,12 +130,13 @@ return [
             'submenu' => [
                 [
                     'text' => 'Cadastrar novo',
-                    'url'  => '/produtos',
+                    'url'  => '/produtos/novo',
                     'icon'    => 'plus',
                 ],
                 [
-                    'text'    => 'Excluir produto',
-                    'url'     => '/produtos/excluir',
+                    'text'    => 'Visualizar produtos',
+                    'url'     => '/produtos',
+                    'icon'    => 'minus',
                 ],
             ],
         ],
