@@ -134,8 +134,24 @@ return [
                     'icon'    => 'plus',
                 ],
                 [
-                    'text'    => 'Visualizar produtos',
+                    'text'    => 'Consultar produtos',
                     'url'     => '/produtos',
+                    'icon'    => 'minus',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Fornecedores',
+            'icon'    => 'shopping-cart',
+            'submenu' => [
+                [
+                    'text' => 'Cadastrar novo',
+                    'url'  => '/fornecedores/create',
+                    'icon'    => 'plus',
+                ],
+                [
+                    'text'    => 'Consultar fornecedores',
+                    'url'     => '/fornecedores',
                     'icon'    => 'minus',
                 ],
             ],

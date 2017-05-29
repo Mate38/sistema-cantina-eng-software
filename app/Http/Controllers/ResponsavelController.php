@@ -4,81 +4,84 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests;
+
+use App\Responsavel;
+
 class ResponsavelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $responsaveis = Responsavel::orderBy('nome', 'asc')->get();
+        //$responsaveis = Responsavel::all();
+        return view('responsaveis.index',['responsaveis' => $responsaveis]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('responsaveis.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nome' => 'required',
+            'descricao' => 'required',
+            'cpf' => 'required',
+            'telefone' => 'required',
+            'celular' => 'required',
+        ]);
+        
+        $responsaveis = new Responsavel;
+        $responsaveis->nome = $request->nome;
+        $responsaveis->descricao = $request->descricao;
+        $responsaveis->cpf = $request->cpf;
+        $responsaveis->telefone = $request->telefone;
+        $responsaveis->celular = $request->celular;
+        $responsaveis->save();
+        return redirect('responsaveis')->with('message', 'Responsavel atualizado com sucesso!');
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $responsaveis = Responsavel::find($id);
+
+        return view('responsaveis.details')->with('detailpage', $responsaveis);        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $responsaveis = Responsavel::find($id);
+
+        return view('responsaveis.edit')->with('detailpage', $responsaveis);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nome' => 'required',
+            'descricao' => 'required',
+            'cpf' => 'required',
+            'telefone' => 'required',
+            'celular' => 'required',
+        ]);
+        
+        $responsaveis = Responsavel::find($id);
+        $responsaveis->nome = $request->nome;
+        $responsaveis->descricao = $request->descricao;
+        $responsaveis->cpf = $request->cpf;
+        $responsaveis->telefone = $request->telefone;
+        $responsaveis->celular = $request->celular;
+        $responsaveis->save();
+        return redirect('responsaveis')->with('message', 'Responsavel atualizado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $responsaveis = Responsavel::find($id);
+        $responsaveis->delete();
+        return redirect('responsaveis');
     }
 }

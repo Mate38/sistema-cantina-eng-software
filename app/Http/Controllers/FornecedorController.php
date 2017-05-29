@@ -4,81 +4,80 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests;
+
+use App\Fornecedor;
+
 class FornecedorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $fornecedores = Fornecedor::orderBy('nomeFantasia', 'asc')->get();
+        //$fornecedores = Fornecedor::all();
+        return view('fornecedores.index',['fornecedores' => $fornecedores]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('fornecedores.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'razaoSocial' => 'required',
+            'nomeFantasia' => 'required',
+            'cnpj' => 'required',
+            'telefone' => 'required',
+        ]);
+        
+        $fornecedores = new Fornecedor;
+        $fornecedores->razaoSocial = $request->razaoSocial;
+        $fornecedores->nomeFantasia = $request->nomeFantasia;
+        $fornecedores->cnpj = $request->cnpj;
+        $fornecedores->telefone = $request->telefone;
+        $fornecedores->save();
+        return redirect('fornecedores')->with('message', 'Fornecedor atualizado com sucesso!');
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $fornecedores = Fornecedor::find($id);
+
+        return view('fornecedores.details')->with('detailpage', $fornecedores);        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $fornecedores = Fornecedor::find($id);
+
+        return view('fornecedores.edit')->with('detailpage', $fornecedores);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'razaoSocial' => 'required',
+            'nomeFantasia' => 'required',
+            'cnpj' => 'required',
+            'telefone' => 'required',
+        ]);
+        
+        $fornecedores = Fornecedor::find($id);
+        $fornecedores->razaoSocial = $request->razaoSocial;
+        $fornecedores->nomeFantasia = $request->nomeFantasia;
+        $fornecedores->cnpj = $request->cnpj;
+        $fornecedores->telefone = $request->telefone;
+        $fornecedores->save();
+        return redirect('fornecedores')->with('message', 'Fornecedor atualizado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $fornecedores = Fornecedor::find($id);
+        $fornecedores->delete();
+        return redirect('fornecedores');
     }
 }
