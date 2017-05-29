@@ -70,13 +70,6 @@ class ProdutoController extends Controller
         return redirect('produtos')->with('message', 'Produto atualizado com sucesso!');
     }
 
-    public function delete($id)
-    {
-        $produtos = Produto::find($id);
-
-        return view('produtos.delete')->with('detailpage', $produtos);
-    }
-
     public function destroy($id)
     {
         $produtos = Produto::find($id);
