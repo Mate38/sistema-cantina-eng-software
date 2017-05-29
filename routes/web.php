@@ -15,15 +15,23 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/teste', function () {
+    return view('produtos.teste');
+});
+
 Route::group(['middleware' => ['web']], function () {
     
     Auth::routes();
 
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::get('/produtos', 'ProdutoController@index');
-    Route::get('/produtos/novo', 'ProdutoController@create');
-    Route::post('/produtos/salvar', 'ProdutoController@store');
+    Route::resource('produtos', 'ProdutoController');
+
+    //Route::get('/produtos', 'ProdutoController@index');
+    //Route::get('/produtos/novo', 'ProdutoController@create');
+    //Route::post('/produtos/salvar', 'ProdutoController@store');
+    //Route::get('/produtos/editar', 'ProdutoController@edit');
+    //Route::post('/produtos/update', 'ProdutoController@update');
     
 });
 

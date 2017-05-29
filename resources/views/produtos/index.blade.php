@@ -1,5 +1,7 @@
 @extends('adminlte::page')
 
+{{ Session::get('message') }}
+
 @section('title')
 
 @section('content_header')
@@ -17,33 +19,45 @@
 
 @section('content')
 
-<div class="box">
-  <div class="box-header">
-    <h3 class="box-title">Produtos cadastrados</h3>
-  </div>
-    <!-- /.box-header -->
-  <div class="box-body">
-    <table id="example1" class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Valor de Venda</th>
-        <th>Descrição</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($produtos as $produtos)
+  <div class="box box-success">
+    <div class="box-header">
+      <h3 class="box-title">Produtos cadastrados</h3>
+    </div>
+      <!-- /.box-header -->
+    <div class="box-body table-responsive no-padding">
+      <table id="produtos" class="table table-bordered table-striped table-hover">
+      <thead>
         <tr>
-          <td>{{$produtos->nome}}</td>
-          <td>{{$produtos->valorVenda}}</td>
-          <td>{{$produtos->descricao}}</td>
+          <th>Nome</th>
+          <th>Valor de Venda</th>
+          <th>Descrição</th>
+          <th>Ações</th>
         </tr>
-      @endforeach
-    </tbody>
-    </table>
+      </thead>
+      <tbody>
+        @foreach($produtos as $produto)
+          <tr>
+            <td>{{$produto->nome}}</td>
+            <td>{{$produto->valorVenda}}</td>
+            <td>{{$produto->descricao}}</td>
+            <td>
+              {!! Form::open(['url' => 'produtos/'.$produto->id, 'method' => 'delete', 'class'=>'form-horizontal', 'id'=>"form_buttons"]) !!}
+                <!--<a href="/produtos/{{ $produto->id }}" class="btn-sm bg-blue">Infos</a>-->
+                <a href="/produtos/{{ $produto->id }}/edit" class="btn-sm bg-yellow">Editar</a>
+                <!--<a href="/produtos/{{ $produto->id }}/delete" class="btn-sm bg-red">Excluir</a>-->
+                <!--<input type="submit" name="name" class="btn-sm bg-red" value="Apagar">-->
+                <!--<button type="submit" class="btn-sm bg-red">Excluir</button>-->
+                <a href="#" class="btn-sm bg-red" onClick="document.getElementById('form_buttons').submit();">Excluir</a>
+              {!! Form::close() !!}
+            </td>
+          </tr>
+        @endforeach
+      </tbody>
+      </table>
+    </div>
+    <!-- /.box-body -->
   </div>
-  <!-- /.box-body -->
-</div>
-<!-- /.box -->
+  <!-- /.box -->
 
 @stop
+

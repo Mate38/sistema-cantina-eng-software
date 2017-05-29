@@ -4,107 +4,83 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests;
 
 use App\Produto;
 
-use Redirect;
-
 class ProdutoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $produtos = Produto::all();
-        return view('produtos.index',[
-            'produtos'=>$produtos
-        ]);
+        $produtos = Produto::orderBy('nome', 'asc')->get();
+        //$produtos = Produto::all();
+        return view('produtos.index',['produtos' => $produtos]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('produtos.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        /*$this->validate($request, [
+        $this->validate($request, [
             'nome' => 'required',
             'valorVenda' => 'required',
             'descricao' => 'required',
-        ]);*/
+        ]);
         
-        /*$produtos = new Produto;
+        $produtos = new Produto;
         $produtos->nome = $request->nome;
         $produtos->valorVenda = $request->valorVenda;
         $produtos->descricao = $request->descricao;
-        $produtos->save();*/
-        //return redirect('produtos')->with('message', 'Produto atualizado com sucesso!');
+        $produtos->save();
+        return redirect('produtos')->with('message', 'Produto atualizado com sucesso!');
         
-        $produtos = new Produto;
-
-        $produtos = $produtos->create($request->all());
-
-        return Redirect::to('produtos/novo');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $produtos = Produto::find($id);
+
+        return view('produtos.details')->with('detailpage', $produtos);        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $produtos = Produto::find($id);
+
+        return view('produtos.edit')->with('detailpage', $produtos);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nome' => 'required',
+            'valorVenda' => 'required',
+            'descricao' => 'required',
+        ]);
+        
+        $produtos = Produto::find($id);
+        $produtos->nome = $request->nome;
+        $produtos->valorVenda = $request->valorVenda;
+        $produtos->descricao = $request->descricao;
+        $produtos->save();
+        return redirect('produtos')->with('message', 'Produto atualizado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function delete($id)
+    {
+        $produtos = Produto::find($id);
+
+        return view('produtos.delete')->with('detailpage', $produtos);
+    }
+
     public function destroy($id)
     {
-        //
+        $produtos = Produto::find($id);
+        $produtos->delete();
+        return redirect('produtos');
     }
 }

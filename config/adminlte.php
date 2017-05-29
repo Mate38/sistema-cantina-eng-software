@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'blue-light',
+    'skin' => 'green-light',
 
     /*
     |--------------------------------------------------------------------------
@@ -130,7 +130,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Cadastrar novo',
-                    'url'  => '/produtos/novo',
+                    'url'  => '/produtos/create',
                     'icon'    => 'plus',
                 ],
                 [
