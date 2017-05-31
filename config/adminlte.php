@@ -157,6 +157,32 @@ return [
             ],
         ],
         [
+            'text'    => 'Clientes',
+            'icon'    => 'shopping-cart',
+            'submenu' => [
+                [
+                    'text' => 'Cadastrar cliente',
+                    'url'  => '/clientes/create',
+                    'icon'    => 'plus',
+                ],
+                [
+                    'text'    => 'Consultar clientes',
+                    'url'     => '/clientes',
+                    'icon'    => 'minus',
+                ],
+                [
+                    'text' => 'Cadastrar responsável',
+                    'url'  => '/responsaveis/create',
+                    'icon'    => 'plus',
+                ],
+                [
+                    'text'    => 'Consultar responsáveis',
+                    'url'     => '/responsaveis',
+                    'icon'    => 'minus',
+                ],
+            ],
+        ],
+        [
             'text' => 'Show my website',
             'url' => '/welcome',
             'target' => '_blank',
