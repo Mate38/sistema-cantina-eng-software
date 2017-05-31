@@ -4,81 +4,85 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests;
+
+use App\Estoque;
+use App\Produto;
+use App\Fornecedor;
+
 class EstoqueController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $estoques = Estoque::orderBy('id', 'asc')->get();
+        //$estoques = Estoque::all();
+        $produtos = Produto::orderBy('nome', 'asc')->get();
+        return view('estoques.index',['estoques' => $estoques],['produtos' => $produtos]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $produtos = Produto::orderBy('nome', 'asc')->get();
+        $fornecedores = Fornecedor::orderBy('nomeFantasia', 'asc')->get();
+        return view('estoques.create',['produtos' => $produtos],['fornecedores' => $fornecedores]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'quantidade' => 'required',
+            'valorCompra' => 'required',
+            'produtos_id' => 'required',
+            'fornecedores_id' => 'required',
+        ]);
+        
+        $estoques = new Estoque;
+        $estoques->quantidade = $request->quantidade;
+        $estoques->valorCompra = $request->valorCompra;
+        $estoques->produtos_id = $request->produtos_id;
+        $estoques->fornecedores_id = $request->fornecedores_id;
+        $estoques->save();
+        return redirect('estoques')->with('message', 'Estoque atualizado com sucesso!');
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $estoques = Estoque::find($id);
+
+        return view('estoques.details')->with('detailpage', $estoques);        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $estoques = Estoque::find($id);
+
+        return view('estoques.edit')->with('detailpage', $estoques);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'quantidade' => 'required',
+            'valorCompra' => 'required',
+            'produtos_id' => 'required',
+            'fornecedores_id' => 'required',
+        ]);
+        
+        $estoques = Estoque::find($id);
+        $estoques->quantidade = $request->quantidade;
+        $estoques->valorCompra = $request->valorCompra;
+        $estoques->produtos_id = $request->produtos_id;
+        $estoques->fornecedores_id = $request->fornecedores_id;
+        $estoques->save();
+        return redirect('estoques')->with('message', 'Estoque atualizado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $estoques = Estoque::find($id);
+        $estoques->delete();
+        return redirect('estoques');
     }
 }

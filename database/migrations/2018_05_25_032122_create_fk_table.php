@@ -27,14 +27,6 @@ class CreateFkTable extends Migration
             $table->foreign('users_id')->references('id')->on('users');
         });
 
-        Schema::table('fornecedores_has_produtos', function(Blueprint $table)
-        {
-            $table->integer('fornecedores_id')->unsigned();
-            $table->integer('produtos_id')->unsigned();
-            $table->foreign('fornecedores_id')->references('id')->on('fornecedores');
-            $table->foreign('produtos_id')->references('id')->on('produtos');
-        });
-
         Schema::table('vendas_has_produtos', function(Blueprint $table)
         {
             $table->integer('vendas_id')->unsigned();
@@ -47,6 +39,8 @@ class CreateFkTable extends Migration
         {
             $table->integer('produtos_id')->unsigned();
             $table->foreign('produtos_id')->references('id')->on('produtos');
+            $table->integer('fornecedores_id')->unsigned();
+            $table->foreign('fornecedores_id')->references('id')->on('fornecedores');
         });
         
     }

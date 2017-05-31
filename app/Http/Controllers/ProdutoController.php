@@ -35,6 +35,7 @@ class ProdutoController extends Controller
         $produtos->nome = $request->nome;
         $produtos->valorVenda = $request->valorVenda;
         $produtos->descricao = $request->descricao;
+        $produtos->quantidade = 0;
         $produtos->save();
         return redirect('produtos')->with('message', 'Produto atualizado com sucesso!');
         

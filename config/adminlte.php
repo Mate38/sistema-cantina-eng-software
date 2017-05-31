@@ -120,9 +120,20 @@ return [
             'icon' => 'cutlery'
         ],
         [
-            'text' => 'Estoque',
-            'url' => '#',
-            'icon' => 'barcode'
+            'text'    => 'Estoque',
+            'icon'    => 'barcode',
+            'submenu' => [
+                [
+                    'text' => 'Nova entrada',
+                    'url'  => '/estoques/create',
+                    'icon'    => 'plus',
+                ],
+                [
+                    'text'    => 'Consultar estoque',
+                    'url'     => '/estoques',
+                    'icon'    => 'minus',
+                ],
+            ],
         ],
         [
             'text'    => 'Produtos',

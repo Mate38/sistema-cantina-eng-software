@@ -29,6 +29,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('fornecedores', 'FornecedorController');
     Route::resource('responsaveis', 'ResponsavelController');
     Route::resource('clientes', 'ClienteController');
+    Route::resource('estoques', 'EstoqueController');
 
     //Route::get('/produtos', 'ProdutoController@index');
     //Route::get('/produtos/novo', 'ProdutoController@create');
