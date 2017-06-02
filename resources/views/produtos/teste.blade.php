@@ -1,48 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="googlebot" content="noindex, nofollow">
 
-    <script type="text/javascript" src="/js/lib/dummy.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
-
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
-
-    <script type="text/javascript" src="//cdn.datatables.net/plug-ins/e9421181788/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/e9421181788/integration/bootstrap/3/dataTables.bootstrap.css">
-
-    <script type="text/javascript" src="//cdn.datatables.net/fixedheader/2.1.1/js/dataTables.fixedHeader.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/fixedheader/2.1.1/css/dataTables.fixedHeader.css">
-
-    <style type="text/css">
-        body { font-size: 140%; padding: 1em; }
-        div.FixedHeader_Cloned table { margin: 0 !important }
-    </style>
-
-    <title>DataTables + Bootstrap + FixedHeader</title>
-
-    <script type='text/javascript'>//<![CDATA[
-    window.onload=function(){
-        $(document).ready(function() {
-            var table = $('#example').DataTable();
-            new $.fn.dataTable.FixedHeader( table, {
-                alwaysCloneTop: true
-            });
-        } );
-    }//]]>
-
-    </script>
-
-</head>
 
 <body>
 <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">

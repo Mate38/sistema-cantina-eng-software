@@ -9,7 +9,7 @@ class Venda_has_Produto extends Model
     protected $table = "vendas_has_produtos";
 
     protected $fillable = [
-        'quantidade',
+        'quantidade', 'produtos_id',
     ];
 
     public function vendas()

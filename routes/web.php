@@ -30,6 +30,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('responsaveis', 'ResponsavelController');
     Route::resource('clientes', 'ClienteController');
     Route::resource('estoques', 'EstoqueController');
+    Route::resource('vendas', 'VendaController');
+    Route::resource('vendas_has_produtos', 'Venda_has_ProdutoController');
 
     //Route::get('/produtos', 'ProdutoController@index');
     //Route::get('/produtos/novo', 'ProdutoController@create');
@@ -38,9 +40,3 @@ Route::group(['middleware' => ['web']], function () {
     //Route::post('/produtos/update', 'ProdutoController@update');
     
 });
-
-
-
-/*Route::group(['middleware' => ['web']], function () {
-    Route::resource('produtos', 'ProdutoController');
-});*/

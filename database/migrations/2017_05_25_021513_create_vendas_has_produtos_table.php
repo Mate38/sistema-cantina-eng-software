@@ -14,8 +14,8 @@ class CreateVendasHasProdutosTable extends Migration
     public function up()
     {
         Schema::create('vendas_has_produtos', function (Blueprint $table) {
+            $table->increments('id');
             $table->decimal('quantidade', 8, 2);
-            
             $table->timestamps();
         });
     }

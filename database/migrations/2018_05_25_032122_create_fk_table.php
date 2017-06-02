@@ -29,20 +29,17 @@ class CreateFkTable extends Migration
 
         Schema::table('vendas_has_produtos', function(Blueprint $table)
         {
-            $table->integer('vendas_id')->unsigned();
             $table->integer('produtos_id')->unsigned();
-            $table->foreign('vendas_id')->references('id')->on('vendas');
             $table->foreign('produtos_id')->references('id')->on('produtos');
         });
 
         Schema::table('estoques', function(Blueprint $table)
         {
             $table->integer('produtos_id')->unsigned();
-            $table->foreign('produtos_id')->references('id')->on('produtos');
             $table->integer('fornecedores_id')->unsigned();
+            $table->foreign('produtos_id')->references('id')->on('produtos');
             $table->foreign('fornecedores_id')->references('id')->on('fornecedores');
         });
-        
     }
 
     /**

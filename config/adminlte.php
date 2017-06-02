@@ -116,7 +116,7 @@ return [
         ],
         [
             'text' => 'Vendas',
-            'url' => '#',
+            'url' => '/vendas',
             'icon' => 'cutlery'
         ],
         [
