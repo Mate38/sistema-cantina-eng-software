@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="fornecedores_id" class="col-sm-2 control-label">Produto</label>
+                  <label for="fornecedores_id" class="col-sm-2 control-label">Fornecedor</label>
                   <div class="col-sm-10">
                     <select class="form-control" name="fornecedores_id">
                       <option value="">--- Escolha um fornecedor ---</option>

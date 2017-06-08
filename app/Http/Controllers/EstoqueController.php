@@ -47,8 +47,12 @@ class EstoqueController extends Controller
         $estoques->produtos_id = $request->produtos_id;
         $estoques->fornecedores_id = $request->fornecedores_id;
         $estoques->save();
+
+        $produto = Produto::find($request->produtos_id);
+        $produto->quantidade += $request->quantidade;
+        $produto->save();
+
         return redirect('estoques')->with('message', 'Estoque atualizado com sucesso!');
-        
     }
 
     public function show($id)

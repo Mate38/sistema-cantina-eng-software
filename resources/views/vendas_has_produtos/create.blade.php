@@ -27,7 +27,7 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                {!! Form::open(array('url' => 'vendas', 'class'=>'form-horizontal')) !!}
+                {!! Form::open(array('url' => '/vendas', 'class'=>'form-horizontal')) !!}
 
                 <div class="box-body">
 
@@ -60,9 +60,19 @@
                     <button type="submit" class="btn bg-blue pull-right">Adicionar</button>
                 </div>
                 {!! Form::close() !!}
-                        <!--</form>-->
+                <!--</form>-->
             </div>
             <!-- /.box -->
+
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>{{$valor_total}}</h3>
+                    <p>Valor total</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+          </div>
 
             <div class="box box-success">
                 <div class="box-header">
@@ -88,16 +98,12 @@
                                     @endif
                                 @endforeach
                                 <td>{{$venda_has_produto->quantidade}}</td>
-                                @foreach($produtos as $produto)
-                                    @if($produto->id == $venda_has_produto->produtos_id)
-                                        <td>{{$produto->valorVenda * $venda_has_produto->quantidade}}</td>
-                                    @endif
-                                @endforeach
+                                <td>{{$venda_has_produto->valorTotal}}</td>
                                 <td>
-                                    {!! Form::open(['url' => 'vendas/'.$venda_has_produto->id, 'method' => 'delete', 'class'=>'form-horizontal', 'id'=>'form_buttons/'.$venda_has_produto->id]) !!}
+                                    {!! Form::open(['url' => 'vendas/'.$venda_has_produto->id, 'method' => 'delete', 'class'=>'form-horizontal', 'id'=>"form_buttons"]) !!}
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <!--<a href="#" class="btn-sm bg-red" onClick="document.getElementById('form_buttons/{id}').submit();">Retirar</a>-->
-                                    <button type="submit" class="btn btn-sm bg-red">Retirar</button>
+                                    <!--<a href="#" class="btn-sm bg-red" onClick="document.getElementById('form_buttons').submit();">Retirar</a>-->
+                                    <button type="submit" class="btn btn-xs btn-danger">Retirar</button>
                                     {!! Form::close() !!}
                                 </td>
                             </tr>
@@ -105,7 +111,7 @@
                         </tbody>
                     </table>
                     <div class="box-footer">
-                        {!! Form::open(['url' => 'vendas_has_produtos/'.$venda_has_produto->id, 'method' => 'delete', 'class'=>'form-horizontal', 'id'=>"form_buttons2"]) !!}
+                        {!! Form::open(['url' => 'vendas/finaliza', 'class'=>'form-horizontal', 'id'=>"form_buttons2"]) !!}
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <button type="submit" class="btn btn-success pull-right">Encerrar</button>
                             <button type="submit" class="btn bg-yellow pull-right">Marcar</button>
