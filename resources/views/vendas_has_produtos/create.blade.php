@@ -112,6 +112,7 @@
                     </table>
                     <div class="box-footer">
                         {!! Form::open(['url' => 'vendas/finaliza', 'class'=>'form-horizontal', 'id'=>"form_buttons2"]) !!}
+                            <!--<input type="hidden" name="nome" value="1">-->
                             <button type="submit" class="btn btn-success pull-right">Encerrar</button>
                             <a href="vendas/prazo" class="btn bg-yellow pull-right">Marcar</a>
                         {!! Form::close() !!}

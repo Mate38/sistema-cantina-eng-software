@@ -32,15 +32,15 @@
                 <div class="box-body">
 
                     <div class="form-group">
-                        <label for="nome" class="col-sm-2 control-label">Cliente</label>
+                        <label for="clientes_id" class="col-sm-2 control-label">Cliente</label>
                         <div class="col-sm-10">
-                            <select class="form-control" name="nome">
+                            <select class="form-control" name="clientes_id">
                                 <option value="">--- Escolha um cliente ---</option>
                                 @foreach($clientes as $cliente)
                                     <option value="{{ $cliente->id }}">{{$cliente->nome}}</option>
                                 @endforeach
                             </select>
-                            {{ ($errors->has('nome')) ? $errors->first('nome') : '' }}
+                            {{ ($errors->has('clientes_id')) ? $errors->first('clientes_id') : '' }}
                         </div>
                     </div>
 

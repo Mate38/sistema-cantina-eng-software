@@ -19,10 +19,12 @@ class VendaController extends Controller {
         $vendas_has_produtos = Venda_has_Produto::all();
         $historico_vendas = new Historico_Venda;
 
-        $valor_total = Venda_has_Produto::all()->sum('valorTotal');
-        $cliente = Cliente::find($request->nome);
-        $cliente->valorDebitos += $valor_total;
-        $cliente->save();
+        if(!empty($request->clientes_id)){
+            $valor_total = Venda_has_Produto::all()->sum('valorTotal');
+            $cliente = Cliente::find($request->clientes_id);
+            $cliente->valorDebitos += $valor_total;
+            $cliente->save();
+        }
 
         foreach($vendas_has_produtos as $venda_has_produto){
             $historico_vendas->quantidade = $venda_has_produto->quantidade;
