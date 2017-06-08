@@ -43,7 +43,7 @@ class Venda_has_ProdutoController extends Controller
         $vendas_has_produtos->quantidade = $request->quantidade;
         $vendas_has_produtos->produtos_id = $request->produtos_id;
         $vendas_has_produtos->save();
-        return redirect('vendas_has_produtos/create')->with('message', 'Venda_has_Produto atualizado com sucesso!');
+        return redirect('vendas')->with('message', 'Venda_has_Produto atualizado com sucesso!');
         
     }
 
@@ -79,6 +79,6 @@ class Venda_has_ProdutoController extends Controller
     {
         $vendas_has_produtos = Venda_has_Produto::find($id);
         $vendas_has_produtos->delete();
-        return redirect('vendas_has_produtos/create');
+        return redirect('vendas');
     }
 }

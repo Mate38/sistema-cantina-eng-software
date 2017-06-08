@@ -27,7 +27,7 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                {!! Form::open(array('url' => '/vendas_has_produtos', 'class'=>'form-horizontal')) !!}
+                {!! Form::open(array('url' => 'vendas', 'class'=>'form-horizontal')) !!}
 
                 <div class="box-body">
 
@@ -94,9 +94,10 @@
                                     @endif
                                 @endforeach
                                 <td>
-                                    {!! Form::open(['url' => 'vendas_has_produtos/'.$venda_has_produto->id, 'method' => 'delete', 'class'=>'form-horizontal', 'id'=>"form_buttons"]) !!}
+                                    {!! Form::open(['url' => 'vendas/'.$venda_has_produto->id, 'method' => 'delete', 'class'=>'form-horizontal', 'id'=>'form_buttons/'.$venda_has_produto->id]) !!}
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <a href="#" class="btn-sm bg-red" onClick="document.getElementById('form_buttons').submit();">Retirar</a>
+                                    <!--<a href="#" class="btn-sm bg-red" onClick="document.getElementById('form_buttons/{id}').submit();">Retirar</a>-->
+                                    <button type="submit" class="btn btn-sm bg-red">Retirar</button>
                                     {!! Form::close() !!}
                                 </td>
                             </tr>
@@ -104,9 +105,11 @@
                         </tbody>
                     </table>
                     <div class="box-footer">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button type="submit" class="btn btn-success pull-right">Encerrar</button>
-                        <button type="submit" class="btn bg-yellow pull-right">Marcar</button>
+                        {!! Form::open(['url' => 'vendas_has_produtos/'.$venda_has_produto->id, 'method' => 'delete', 'class'=>'form-horizontal', 'id'=>"form_buttons2"]) !!}
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <button type="submit" class="btn btn-success pull-right">Encerrar</button>
+                            <button type="submit" class="btn bg-yellow pull-right">Marcar</button>
+                        {!! Form::close() !!}
                     </div>
                 </div>
                 <!-- /.box-body -->
