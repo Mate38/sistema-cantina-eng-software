@@ -10,6 +10,7 @@ use App\Venda;
 use App\Venda_has_Produto;
 use App\Historico_Venda;
 use App\Produto;
+use App\Cliente;
 
 class VendaController extends Controller {
 
@@ -17,6 +18,12 @@ class VendaController extends Controller {
     {     
         $vendas_has_produtos = Venda_has_Produto::all();
         $historico_vendas = new Historico_Venda;
+
+        $valor_total = Venda_has_Produto::all()->sum('valorTotal');
+        $cliente = Cliente::find($request->nome);
+        $cliente->valorDebitos += $valor_total;
+        $cliente->save();
+
         foreach($vendas_has_produtos as $venda_has_produto){
             $historico_vendas->quantidade = $venda_has_produto->quantidade;
             $historico_vendas->valorTotal = $venda_has_produto->valorTotal; 
@@ -30,6 +37,15 @@ class VendaController extends Controller {
             $venda_has_produto->delete();
         }
         return redirect('vendas')->with('message', 'Venda_has_Produto atualizado com sucesso!');      
+    }
+
+    public function prazo(Request $request)
+    {     
+        $clientes = Cliente::orderBy('nome', 'asc')->get();
+
+        $valor_total = Venda_has_Produto::all()->sum('valorTotal');
+
+        return view('vendas/prazo',['clientes' => $clientes, 'valor_total' => $valor_total]);      
     }
 
 }

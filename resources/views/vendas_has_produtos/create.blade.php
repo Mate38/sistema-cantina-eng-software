@@ -112,9 +112,8 @@
                     </table>
                     <div class="box-footer">
                         {!! Form::open(['url' => 'vendas/finaliza', 'class'=>'form-horizontal', 'id'=>"form_buttons2"]) !!}
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <button type="submit" class="btn btn-success pull-right">Encerrar</button>
-                            <button type="submit" class="btn bg-yellow pull-right">Marcar</button>
+                            <a href="vendas/prazo" class="btn bg-yellow pull-right">Marcar</a>
                         {!! Form::close() !!}
                     </div>
                 </div>
