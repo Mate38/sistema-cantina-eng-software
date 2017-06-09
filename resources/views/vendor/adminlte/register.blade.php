@@ -58,6 +58,13 @@
                         </span>
                     @endif
                 </div>
+                
+                <div class="form-group has-feedback {{ $errors->has('nivel') ? 'has-error' : '' }}">
+                    <input type="text" name="nivel" class="form-control" value="{{ old('nivel') }}"
+                           placeholder="Nivel de acesso">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+
                 <button type="submit"
                         class="btn btn-primary btn-block btn-flat"
                 >{{ trans('adminlte::adminlte.register') }}</button>

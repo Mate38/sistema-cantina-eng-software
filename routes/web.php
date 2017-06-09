@@ -36,7 +36,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('vendas', 'Venda_has_ProdutoController@store');
     Route::delete('vendas/{id}', 'Venda_has_ProdutoController@destroy');
     Route::post('vendas/finaliza', 'VendaController@store');
-    Route::get('vendas/prazo', 'VendaController@prazo');
+    Route::get('vendas/prazo', 'VendaController@prazo')->middleware('admin');;
     //Route::get('vendas', 'VendaController@index');
 
     //Route::get('/produtos', 'ProdutoController@index');

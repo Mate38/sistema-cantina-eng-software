@@ -46,7 +46,9 @@
             <td>
               {!! Form::open(['url' => 'clientes/'.$cliente->id, 'method' => 'delete', 'class'=>'form-horizontal', 'id'=>"form_buttons"]) !!}
                 <a href="/clientes/{{ $cliente->id }}/edit" class="btn-sm bg-yellow">Editar</a>
-                <a href="#" class="btn-sm bg-red" onClick="document.getElementById('form_buttons').submit();">Excluir</a>
+                @if(Auth::user()->nivel == 1)
+                  <a href="#" class="btn-sm bg-red" onClick="document.getElementById('form_buttons').submit();">Excluir</a>
+                @endif
               {!! Form::close() !!}
             </td>
           </tr>
