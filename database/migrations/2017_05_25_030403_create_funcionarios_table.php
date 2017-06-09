@@ -19,6 +19,8 @@ class CreateFuncionariosTable extends Migration
             $table->text('descricao');
             $table->string('cpf', 11);
             $table->string('carteiraTrabalho', 20);
+            $table->string('telefone', 11);
+            $table->string('celular', 11);
             $table->timestamps();
         });
     }

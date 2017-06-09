@@ -108,7 +108,7 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        'MENU PRINCIPAL',
          [
         'text' => 'Home',
         'url' => '/home',
@@ -193,72 +193,33 @@ return [
                 ],
             ],
         ],
+        'FERRAMENTAS DO USUÁRIO',
         [
-            'text' => 'Show my website',
-            'url' => '/welcome',
-            'target' => '_blank',
-        ],
-        'ACCOUNT SETTINGS',
-        [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
-        [
-            'text' => 'Change Password',
+            'text' => 'Alterar senha',
             'url'  => 'admin/settings',
             'icon' => 'lock',
         ],
+        'PAINEL ADMINISTRATIVO',
         [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
+            'text' => 'Funcionários',
+            'icon'  => 'user',
             'submenu' => [
                 [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text' => 'Cadastrar funcionário',
+                    'url'  => '/funcionarios/create',
+                    'icon'    => 'plus',
                 ],
                 [
-                    'text'    => 'Level One',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'Level Two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Level Two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text'    => 'Consultar funcionarios',
+                    'url'     => '/funcionarios',
+                    'icon'    => 'minus',
                 ],
             ],
         ],
-        'LABELS',
         [
-            'text'       => 'Important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
+            'text' => 'Cadastrar usuário',
+            'url'  => '/register',
+            'icon' => 'user',
         ],
     ],
 
