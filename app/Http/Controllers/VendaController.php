@@ -17,7 +17,6 @@ class VendaController extends Controller {
     public function store(Request $request)
     {     
         $vendas_has_produtos = Venda_has_Produto::all();
-        $historico_vendas = new Historico_Venda;
 
         if(!empty($request->clientes_id)){
             $valor_total = Venda_has_Produto::all()->sum('valorTotal');
@@ -27,6 +26,7 @@ class VendaController extends Controller {
         }
 
         foreach($vendas_has_produtos as $venda_has_produto){
+            $historico_vendas = new Historico_Venda;
             $historico_vendas->quantidade = $venda_has_produto->quantidade;
             $historico_vendas->valorTotal = $venda_has_produto->valorTotal; 
             $historico_vendas->produtos_id = $venda_has_produto->produtos_id; 
@@ -35,7 +35,7 @@ class VendaController extends Controller {
             $produto = Produto::find($venda_has_produto->produtos_id);
             $produto->quantidade -= $venda_has_produto->quantidade;
             $produto->save();
-
+            
             $venda_has_produto->delete();
         }
         return redirect('vendas')->with('message', 'Venda_has_Produto atualizado com sucesso!');      
