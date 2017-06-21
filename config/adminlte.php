@@ -132,7 +132,7 @@ return [
         ],
         [
             'text'    => 'Produtos',
-            'icon'    => 'shopping-cart',
+            'icon'    => 'apple',
             'submenu' => [
                 [
                     'text' => 'Cadastrar novo',
@@ -164,7 +164,7 @@ return [
         ],
         [
             'text'    => 'Clientes',
-            'icon'    => 'shopping-cart',
+            'icon'    => 'user',
             'submenu' => [
                 [
                     'text' => 'Cadastrar cliente',

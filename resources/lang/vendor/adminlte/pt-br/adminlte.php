@@ -2,7 +2,7 @@
 
 return [
 
-    'full_name'                   => 'Nome de usuário',
+    'full_name'                   => 'Nome do usuário',
     'email'                       => 'Email',
     'password'                    => 'Senha',
     'retype_password'             => 'Repita a senha',
