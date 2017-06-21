@@ -1,0 +1,299 @@
+Caso de uso: Gerenciar responsáveis.
+
+1. Descrição:
+	Gerenciamento dos dados cadastrais sobre os responsáveis do cliente. Este é um meio de guardar apenas informações, não sendo obrigatório durante o cadastro de um cliente, porém, caso necessite referenciar um responsável a um cliente, precisaria cadastrar um responsável antes de cadastrar o cliente, o processo inverso pode acontecer, cadastrar primeiro o cliente (sem responsável definido) e então cadastrar o responsável, o ator pode então editar o cliente e referenciar o responsável.
+
+2. Ator:
+	Atendente, Gerente.
+
+3. Pré-condição:
+	Não há.
+
+4. Requisitos associados.
+	Não há.
+
+5. Fluxo de eventos.
+	Em caso de necessidade, a tela de cadastro é acessada através do link cadastrar responsável na aba cliente.
+
+	5.1 Fluxo Principal (cadastro).
+		P1. O ator acessa a página e insere os dados nos campos cadastrais (Nome, Descrição, CPF, Telefone e Celular).
+		P2. Ao clicar em salvar, verifica-se a coerência dos dados inseridos, se estiver preenchido corretamente, cria um novo registro no banco de dados.
+6. Regras de negócio.
+	6.1 Regra de negócio.
+		RN.1. Todos os campos são obrigatórios.
+
+	6.2. Regra de aplicação.
+		RA.1. Cadeia de caracteres correspondente ao nome (máximo de 50 caracteres).
+		RA.2. Cadeia de caracteres correspondente a descrição do produto (sem limite definido).
+		RA.3. Cadeia de caracteres numéricos correspondente ao CPF, celular e ao telefone (máximo de 11 caracteres por campo).
+
+Caso de uso: Manter cliente.
+
+1. Descrição:
+	Inserir, remover, alterar e consultar o registro de clientes. Tem por objetivo realizar o controle dos dados cadastrais e conta (saldo) dos clientes.
+
+2. Ator:
+	Atendente, Gerente.
+
+3. Pré-condição:
+	Os atores devem estar cadastrados no sistema.
+	O cliente deve fornecer os dados cadastrais ao ator.
+
+4. Requisitos Associados:
+	RAS.1. Designar um responsável ao cliente, pois prevê-se que muitos dos clientes sejam menores de 18 anos, portanto, é necessário (embora, não obrigatório) cadastrar juntamente ao cliente, informações referentes à pessoa responsável.
+
+5. Fluxo de eventos.
+
+	Na aba principal, as opções de cadastro e consulta estão explícitas na aba Clientes.
+
+	5.1.1. Fluxo Principal (inserir).
+		P1 – O ator acessa a página de inserir cliente.
+		P2 – Preenche os campos cadastrais: Nome (RA.1), Descrição (RA.2), CPF (RA.3), Telefone (RA.3) e por último seleciona o seu responsável (previamente cadastrado).
+		P3 – Ao clicar em salvar, cadastra o cliente no banco de dados.
+	
+	5.1.2. Fluxo Principal (consultar, editar e remover).
+		P1 – O ator acessa a página de consultar clientes.
+		P2 – Mostra-se uma lista dos clientes, com opções na mesma linha de editar os dados cadastrais ou de excluir o cliente.
+	
+	5.1.2.1. Fluxo Alternativo (editar).
+		P1 – Após a listagem de clientes, o ator clica no botão “editar” na linha do cliente selecionado.
+		P2 – Abre uma página de edição de cliente, os campos são editáveis e ao salvar, os registros são alterados no banco de dados.
+
+	5.1.2.2. Fluxo Alternativo (remover).
+		P1 – Após a listagem dos clientes, o ator clica no botão “remover”.
+		P2 – Remove-se então da base de dados o cliente.
+	
+	5.2. Fluxo Principal (acesso ao gerenciador de contas).
+		P1 – Após a listagem dos clientes, o ator clica no botão “conta”.
+		P2 – O ator é direcionado à página de gerenciamento de conta.
+		
+6. Regras de negócio.
+	6.1 Regra de negócio.
+		RN.1. Para efetuar a venda, o cadastro não é obrigatório.
+		RN.2. Nem todos os clientes são menores de 18 anos, portanto, não é obrigatório inserir ou designar um responsável.
+	6.2. Regra de aplicação.
+		RA.1. Cadeia de caracteres correspondente ao nome (máximo de 50 caracteres).
+		RA.2. Cadeia de caracteres correspondente a descrição do produto (sem limite definido).
+		RA.3. Cadeia de caracteres numéricos correspondente ao CPF e ao telefone (máximo de 11 caracteres).
+	
+Caso de uso: Gerenciamento de conta.
+
+1. Descrição:
+	Permite o ator gerenciar a conta pessoal do cliente, podendo inserir valores “em a ver” como crédito ou debitar valores em conta.
+
+2. Ator:
+	Atendente, Gerente.
+
+3. Pré-condição:
+	O cliente deve estar previamente cadastrado.
+
+4. Requisitos associados:
+	Não há.
+
+5. Fluxo principal.
+	
+	O ator deve realizar algumas etapas antes de acessar a conta pessoal do cliente.
+
+	P1. O ator realiza a listagem de clientes e então clica no botão “conta” na mesma linha do cliente selecionado.
+ 	P2. O ator visualiza o saldo atual do cliente, e então digita o valor a ser creditado ou debitado (RA.2).
+					conta=conta±valor
+
+	P3. Ao clicar em salvar, o saldo do cliente é alterado no banco de dados.
+
+6. Regra de negócio:
+	6.1. Regra de aplicação:		
+		RA.1. O valor do campo é representado por um dado do tipo flutuante.
+
+Caso de uso: Realizar venda.
+
+1. Descrição:
+	Seção onde é feita a venda de produtos aos clientes.
+
+2. Atores:
+	Gerente, Atendente.
+
+3. Pré-condição:
+	Produtos cadastrados e em estoque.
+	Cliente previamente cadastrado caso deseje “marcar” a compra.	
+
+4. Requisitos associados.
+	Não há.
+
+5. Fluxo Principal.
+	P1. A primeira etapa da compra é feita através da seleção dos produtos e a quantidade de cada. O ator seleciona um produto (RA.1) e então digita a quantidade vendida (RA.2).
+	P2. O valor total da compra é calculado automaticamente a cada adição de produtos (botão adicionar), levando em consideração o preço de venda do produto, multiplicado pela quantidade.
+	P2. Já na segunda etapa, efetua-se uma compra direta (à vista, sem necessidade de um cliente cadastrado) ou pode-se debitar o valor da compra na conta do cliente.
+	
+	5.1. Fluxo Alternativo (Marcar):
+		P1. Ao clicar no botão “marcar”, o ator deve selecionar o cliente (RA.3).
+		P2. Após a seleção, conclui-se a compra, debitando o valor da conta do cliente.
+	
+	5.2. Fluxo Alternativo (Á vista):
+		P1. Ao clicar no botão “encerrar”, a compra é efetuada. O sistema deve interpretar como uma compra a vista.
+
+6. Regras de negócios:
+	6.1. Regra de aplicação:
+		RA.1. Caixa de produtos (combo box) selecionáveis, contendo todos os produtos cadastrados.
+		RA.2 Campo de texto, cujo valor é representado por um número inteiro natural (sem sinal) representando a quantidade do produto.
+		RA.3. Caixa de clientes (combo box) selecionáveis, contendo todos os clientes cadastrados.
+
+Caso de uso: Manter produtos.
+
+1. Descrição:
+	Caso de uso responsável por manter os produtos, sendo sua tarefa de inserção, edição, consulta e remoção de produtos.
+2. Atores:
+	Atendente, Gerente.
+
+3. Pré-condição:
+	Não há.
+
+4. Requisitos Associados:
+	Entrada de estoque, requer que o produto em entrada esteja previamente cadastrado.
+
+5.Fluxo Principal
+	
+	Na aba de “Produtos”, existem dois fluxos distintos: cadastro e consulta.
+
+	5.1 Fluxo Principal (inserir):
+		P1. Ao clicar no link “Cadastrar novo” na aba “Produtos”, o ator é direcionado à página de cadastro de produtos.
+		P2. O ator preenche os campos Nome (RA.1), Valor de venda (RA.2) e Descrição (RA.3).
+		P3. O ator finaliza o cadastro clicando em “salvar”.
+
+	5.2 Fluxo Principal (Consulta):
+		P1. Ao clicar no link “Consultar produtos” na aba “Produtos”, o ator é direcionado à página de consulta de produtos.
+		P2. A página lista todos os produtos disponíveis, permitindo editar ou remover produtos através dos botões “editar” e “remover”.
+
+	5.2.1. Fluxo Alternativo (Editar):
+		P1. Após a listagem, o ator clica em “editar”.
+		P2. O ator então, é direcionado a um a página de edição do produto e preenche os campos de edição.
+		P3. Ao salvar, o registro do produto é modificado com os novos valores.
+
+	5.2.2. Fluxo Alternativo (Remover):
+		P1. Após a listagem, o ator clica em “remover”.
+		P2. O ator então confirma e o produto é removido da base de dados.
+
+6. Regras de negócios:
+	6.1 Regras de aplicação:
+		RA.1. Cadeia de caracteres correspondente ao nome do produto (máximo de 50 caracteres).
+		RA.2. Campo de texto, representado por um tipo de dado flutuante referente ao preço de compra do produto.
+		RA.3. Cadeia de caracteres correspondente à descrição do produto.
+		
+
+Caso de uso: Controlar fornecedores.
+
+1. Descrição:
+	Esse caso de uso tem por finalidade controlar os registros de fornecedores, através de inserção, consulta, edição e remoção.
+
+2. Atores:
+	Atendente, Gerente.
+
+3. Pré-condição.
+	Não há.
+
+4. Requisitos associados.
+	O registro de fornecedores é necessário durante a entrada de produtos no estoque.
+
+5. Fluxo Principal.
+
+	O ator pode inserir, consultar, remover ou editar os dados dos fornecedores.
+
+	5.1 Fluxo Principal (inserção).
+		P1. O ator acessa página no link “Cadastrar novo” na aba “Fornecedores”.
+		P2. O ator então preenche os campos de Razão Social (RA.1), Nome fantasia (RA.2), CNPJ (RA.3) e Telefone (RA.4).
+		P3. O ator então clica em “salvar” e registra o fornecedor no banco de dados.	
+	5.2 Fluxo Principal (consulta).
+		P1. O ator acessa a página no link “Consultar fornecedores” na aba “fornecedores”.
+		P2. A página lista todos os fornecedores e oferece opções de “editar” ou “remover” registros.
+	5.2.1 Fluxo Alternativo (edição).
+		P1. Ao clicar no botão “editar” o ator é direcionado a uma página onde pode editar os campos atuais do registro.
+		P2. O ator edita os campos que precisa.
+		P3. O ator salva clicando em “salvar” e altera os dados do fornecedor no banco de dados.
+	5.2.2 Fluxo Alternativo (remoção).
+		P1. Na lista fornecida ainda na página de consulta, em cada linha existe o botão “excluir”.
+		P2. Ao clicar no botão “excluir” o ator remove do banco de dados os registros referentes ao fornecedor selecionado.
+
+6. Regras de negócios.
+	6.1. Regas de aplicação:
+		RA.1. Cadeia de caracteres correspondente à Razão social (máximo de 50 caracteres).
+		RA.2. Cadeia de caracteres correspondente ao Nome fantasia (máximo de 50 caracteres).
+		RA.3. Cadeia de caracteres correspondente ao CNPJ do fornecedor (máximo de 20 caracteres).
+		RA.4. Cadeia de caracteres correspondente ao telefone do fornecedor (máximo de 11 caracteres).
+
+Caso de uso: Controlar Estoque.
+
+1. Descrição:
+	Caso de uso responsável por controlar os registros de produtos em estoque, permite adicionar, consultar, remover e editar o estoque de produtos, referenciando o produto e seu respectivo fornecedor, controlando quantidade e valor de compra.
+
+2. Atores:
+	Atendente, Gerente.
+
+3. Pré-condição:
+	Produto deve estar previamente cadastrado.
+	Fornecedor deve estar previamente cadastrado.
+
+4. Requisitos associados:
+	Torna possível realizar a venda de um produto caso entre em estoque.
+
+5. Fluxo Principal:
+	
+	O ator pode inserir, consultar, remover ou editar o estoque.
+
+	5.1. Fluxo Principal (inserção):
+		P1. O ator acessa a página de inserção ao clicar em “Nova entrada” na aba “Estoque”.
+		P2. O ator então seleciona o Produto em entrada (RA.1), o Fornecedor (RA.2), a quantidade em entrada (RA.3) e o valor de compra (RA.4).
+		P3. Ao clicar em salvar, um novo registro de estoque é criado no banco de dados.
+	5.2. Fluxo Principal (consulta):
+		P1. O ator clica em “Consultar estoque” na aba “Estoque”.
+		P2. O ator é então direcionado à página de consulta de estoque, que disponibiliza os registros de estoque armazenados no banco.
+	
+	5.2.1. Fluxo Alternativo (edição):
+		P1. Ao clicar no botão “editar” o ator é direcionado a uma página onde pode editar os campos atuais do registro.
+		P2. O ator edita os campos que precisa.
+		P3. O ator salva clicando em “salvar” e altera os dados do estoque no banco de dados.
+	5.2.2 Fluxo Alternativo (remoção).
+		P1. Na lista fornecida ainda na página de consulta, em cada linha existe o botão “excluir”.
+		P2. Ao clicar no botão “excluir” o ator remove do banco de dados os registros referentes ao produto selecionado.
+
+6. Regras de negócios:
+	6.1. Regra de negócio:
+		RN.1. Deve ser obrigatório, selecionar o produto e o fornecedor.
+	6.2. Regas de aplicação:
+		RA.1. Caixa selecionável com o nome dos produtos cadastrados.
+		RA.2. Caixa selecionável com o nome dos fornecedores cadastrados.
+		RA.3. Campo de texto representado por um tipo de dado numérico natural (inteiro sem sinal).
+		RA.4. Campo de texto representado por um tipo de dado flutuante.
+
+Caso de uso: Controlar Usuários.
+
+1. Descrição:
+	Caso de uso para controlar os dados cadastrais de cada usuário (consultar, adicionar, remover e alterar).
+
+2. Atores:
+	Gerente.
+
+3. Pré-condição:
+	Não há.
+
+4. Requisitos Associados:
+	Durante o cadastro de um funcionário, pode-se associar um funcionário a um usuário que terá acesso ao sistema.
+
+5. Fluxo Principal:
+	
+	O recurso está disponível no painel administrativo, somente usuários com nível de acesso podem acessar tal recurso.
+
+	5.1. Fluxo Principal (cadastrar usuário):
+		P1. Ao clicar em “Cadastrar usuário” na aba “Painel administrativo” o ator é direcionado a página de cadastro de usuário.
+		P2. O ator preenche os campos cadastrais, como Nome (RA.1), E-mail (RA.2), Senha (RA.3), Confirmação de senha (RA.3) e o Nível de acesso (RA.4).
+		P3. Ao clicar em Registrar, o ator cadastra um novo usuário com acesso ao sistema (de acordo com o nível de acesso).
+
+6. Regras de negócios:
+	6.1. Regra de negócio:
+	 	RN.1. O ator possui níveis de acesso (Atendente e Gerente), o atendente possui acesso limitado aos recursos do sistema.
+		RN.2. Somente o gerente (usuário com nível de acesso superior) pode controlar outros usuários.
+		RN.3. São os níveis 1 para Atendente (acesso limitado no sistema) e 2 para Gerente (acesso ilimitado no sistema).
+
+	6.2. Regra de aplicação:
+		RA.1 Cadeia de caracteres corresponde ao nome do usuário (Máximo 255 caracteres).
+		RA.2 Cadeia de caracteres corresponde ao e-mail do usuário (Máximo 255 caracteres)
+		RA.3 Cadeia de caracteres corresponde a senha do usuário (Máximo 255 caracteres), a confirmação de senha serve para verificar a integridade da senha inserida anteriormente.
+		RA.4 Campo de texto, representado por um tipo de dado inteiro sem sinal.
