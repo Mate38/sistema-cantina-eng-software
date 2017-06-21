@@ -10,6 +10,7 @@ Esse projeto tem  por objetivo avaliar o processo de desenvolvimento de um softw
 * MySQL Server >= 5.5.54
 
 ## Configuração
+------------------------------
 
 Após clonar o projeto é necessário criar no MySQL um DB (banco de dados) com o nome de "cantinator" (sem as aspas).
 
