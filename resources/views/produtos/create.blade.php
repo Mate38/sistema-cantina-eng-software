@@ -31,27 +31,25 @@
             <!--<form class="form-horizontal" method="post" action="/produtos">-->
               <div class="box-body">
               <!--{!! csrf_field() !!}-->
-                <div class="form-group">
+
+                <div class="form-group has-feedback {{ $errors->has('nome') ? 'has-error' : '' }}">
                   <label for="nome" class="col-sm-2 control-label">Nome</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="nome" placeholder="Nome do produto">
-                    {{ ($errors->has('nome')) ? $errors->first('nome') : '' }}
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('valorVenda') ? 'has-error' : '' }}">
                   <label for="valorVenda" class="col-sm-2 control-label">Valor de venda</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="valorVenda" placeholder="Valor para venda do produto">
-                    {{ ($errors->has('valorVenda')) ? $errors->first('valorVenda') : '' }}
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('descricao') ? 'has-error' : '' }}">
                   <label for="descricao" class="col-sm-2 control-label">Descrição</label>
                   <div class="col-sm-10">
                   <textarea type="text" class="form-control" rows="3" name="descricao" placeholder="Informações adicionais do produto"></textarea>
-                  {{ ($errors->has('descricao')) ? $errors->first('descricao') : '' }}
                     <!--<input type="text" class="form-control" name="descricao" placeholder="Informações adicionais do produto">-->
                   </div>
                 </div>

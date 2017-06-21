@@ -31,14 +31,14 @@
             {!! Form::open(['url' => 'clientes/'.$detailpage->id.'/saldo', 'class'=>'form-horizontal']) !!}
               <div class="box-body">
                 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('valorDebitos') ? 'has-error' : '' }}">
                   <label for="valorDebitos" class="col-sm-2 control-label">Valor em debito</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="valorDebitos" value="" placeholder="{{ $detailpage->valorDebitos }}" disabled>
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('valorEntrada') ? 'has-error' : '' }}">
                   <label for="valorEntrada" class="col-sm-2 control-label">Valor do pagamento</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="valorEntrada" value="" placeholder="">

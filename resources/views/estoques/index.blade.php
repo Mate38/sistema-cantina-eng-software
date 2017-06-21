@@ -41,7 +41,7 @@
             <td>
               {!! Form::open(['url' => 'produtos/'.$produto->id, 'method' => 'delete', 'class'=>'form-horizontal', 'id'=>"form_buttons"]) !!}
                 <!--<a href="/produtos/{{ $produto->id }}" class="btn-sm bg-blue">Infos</a>-->
-                <a href="/produtos/{{ $produto->id }}/edit" class="btn-sm bg-yellow">Editar</a>
+                <!--<a href="/produtos/{{ $produto->id }}/edit" class="btn-sm bg-yellow">Editar</a>-->
                 <!--<a href="/produtos/{{ $produto->id }}/delete" class="btn-sm bg-red">Excluir</a>-->
                 <!--<input type="submit" name="name" class="btn-sm bg-red" value="Apagar">-->
                 <!--<button type="submit" class="btn-sm bg-red">Excluir</button>-->

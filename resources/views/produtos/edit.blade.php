@@ -30,27 +30,25 @@
     <!-- form start -->
             {!! Form::open(['url' => 'produtos/'.$detailpage->id, 'method' => 'PUT', 'class'=>'form-horizontal']) !!}
               <div class="box-body">
-                <div class="form-group">
+
+                <div class="form-group has-feedback {{ $errors->has('nome') ? 'has-error' : '' }}">
                   <label for="nome" class="col-sm-2 control-label">Nome</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="nome" value="{{ $detailpage->nome }}" placeholder="Nome do produto">
-                    {{ ($errors->has('nome')) ? $errors->first('nome') : '' }}
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('valorVenda') ? 'has-error' : '' }}">
                   <label for="valorVenda" class="col-sm-2 control-label">Valor de venda</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="valorVenda" value="{{ $detailpage->valorVenda }}" placeholder="Valor para venda do produto">
-                    {{ ($errors->has('valorVenda')) ? $errors->first('valorVenda') : '' }}
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('descricao') ? 'has-error' : '' }}">
                   <label for="descricao" class="col-sm-2 control-label">Descrição</label>
                   <div class="col-sm-10">
                   <textarea type="text" class="form-control" rows="3" name="descricao" placeholder="Informações adicionais do produto">{{ $detailpage->descricao }}</textarea>
-                  {{ ($errors->has('descricao')) ? $errors->first('descricao') : '' }}
                   </div>
                 </div>
 

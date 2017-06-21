@@ -30,28 +30,29 @@
     <!-- form start -->
             {!! Form::open(['url' => 'fornecedores/'.$detailpage->id, 'method' => 'PUT', 'class'=>'form-horizontal']) !!}
               <div class="box-body">
-                <div class="form-group">
+
+                <div class="form-group has-feedback {{ $errors->has('razaoSocial') ? 'has-error' : '' }}">
                   <label for="razaoSocial" class="col-sm-2 control-label">Razão social</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="razaoSocial" value="{{ $detailpage->razaoSocial }}" placeholder="">
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('nomeFantasia') ? 'has-error' : '' }}">
                   <label for="nomeFantasia" class="col-sm-2 control-label">Nome de fantasia</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="nomeFantasia" value="{{ $detailpage->nomeFantasia }}" placeholder="">
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('cnpj') ? 'has-error' : '' }}">
                   <label for="cnpj" class="col-sm-2 control-label">CNPJ</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="cnpj" value="{{ $detailpage->cnpj }}" placeholder="">
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('telefone') ? 'has-error' : '' }}">
                   <label for="telefone" class="col-sm-2 control-label">Telefone</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="telefone" value="{{ $detailpage->telefone }}" placeholder="">

@@ -43,7 +43,7 @@
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('fornecedores_id') ? 'has-error' : '' }}">
                   <label for="fornecedores_id" class="col-sm-2 control-label">Fornecedor</label>
                   <div class="col-sm-10">
                     <select class="form-control" name="fornecedores_id">
@@ -52,23 +52,20 @@
                         <option value="{{ $fornecedor->id }}">{{$fornecedor->nomeFantasia}}</option>
                       @endforeach
                     </select>
-                    {{ ($errors->has('fornecedores_id')) ? $errors->first('fornecedores_id') : '' }}
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('quantidade') ? 'has-error' : '' }}">
                   <label for="quantidade" class="col-sm-2 control-label">Quantidade</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="quantidade" placeholder="">
-                    {{ ($errors->has('quantidade')) ? $errors->first('quantidade') : '' }}
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('valorCompra') ? 'has-error' : '' }}">
                   <label for="valorCompra" class="col-sm-2 control-label">Valor de compra</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="valorCompra" placeholder="">
-                    {{ ($errors->has('valorCompra')) ? $errors->first('valorCompra') : '' }}
                   </div>
                 </div>
 

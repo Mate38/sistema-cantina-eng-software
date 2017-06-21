@@ -30,51 +30,45 @@
             {!! Form::open(array('url' => '/funcionarios', 'class'=>'form-horizontal')) !!}
               <div class="box-body">
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('nome') ? 'has-error' : '' }}">
                   <label for="nome" class="col-sm-2 control-label">Nome</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="nome" placeholder="">
-                    {{ ($errors->has('nome')) ? $errors->first('nome') : '' }}
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('descricao') ? 'has-error' : '' }}">
                   <label for="descricao" class="col-sm-2 control-label">Descrição</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="descricao" placeholder="">
-                    {{ ($errors->has('descricao')) ? $errors->first('descricao') : '' }}
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('cpf') ? 'has-error' : '' }}">
                   <label for="cpf" class="col-sm-2 control-label">CPF</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="cpf" placeholder="">
-                    {{ ($errors->has('cpf')) ? $errors->first('cpf') : '' }}
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('carteiraTrabalho') ? 'has-error' : '' }}">
                   <label for="carteiraTrabalho" class="col-sm-2 control-label">Carteira de trabalho</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="carteiraTrabalho" placeholder="">
-                    {{ ($errors->has('carteiraTrabalho')) ? $errors->first('carteiraTrabalho') : '' }}
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('telefone') ? 'has-error' : '' }}">
                   <label for="telefone" class="col-sm-2 control-label">Telefone</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="telefone" placeholder="">
-                    {{ ($errors->has('telefone')) ? $errors->first('telefone') : '' }}
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('celular') ? 'has-error' : '' }}">
                   <label for="celular" class="col-sm-2 control-label">Celular</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="celular" placeholder="">
-                    {{ ($errors->has('celular')) ? $errors->first('celular') : '' }}
                   </div>
                 </div>
 

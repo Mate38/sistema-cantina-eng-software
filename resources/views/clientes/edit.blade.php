@@ -31,35 +31,35 @@
             {!! Form::open(['url' => 'clientes/'.$detailpage->id, 'method' => 'PUT', 'class'=>'form-horizontal']) !!}
               <div class="box-body">
                 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('nome') ? 'has-error' : '' }}">
                   <label for="nome" class="col-sm-2 control-label">Nome</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="nome" value="{{ $detailpage->nome }}" placeholder="">
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('descricao') ? 'has-error' : '' }}">
                   <label for="descricao" class="col-sm-2 control-label">Descrição</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="descricao" value="{{ $detailpage->descricao }}" placeholder="">
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('cpf') ? 'has-error' : '' }}">
                   <label for="cpf" class="col-sm-2 control-label">CPF</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="cpf" value="{{ $detailpage->cpf }}" placeholder="">
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('telefone') ? 'has-error' : '' }}">
                   <label for="telefone" class="col-sm-2 control-label">Telefone</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="telefone" value="{{ $detailpage->telefone }}" placeholder="">
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback {{ $errors->has('responsaveis_id') ? 'has-error' : '' }}">
                   <label for="responsaveis_id" class="col-sm-2 control-label">Responsável</label>
                   <div class="col-sm-10">
                     <select class="form-control" name="responsaveis_id">
@@ -68,7 +68,6 @@
                       @endforeach
                     </select>
                     <!--<input type="text" class="form-control" name="responsaveis_id" placeholder="">-->
-                    {{ ($errors->has('responsaveis_id')) ? $errors->first('responsaveis_id') : '' }}
                   </div>
                 </div>
 
