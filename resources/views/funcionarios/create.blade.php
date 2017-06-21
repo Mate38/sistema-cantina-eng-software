@@ -78,7 +78,7 @@
                   </div>
                 </div>
 
-                <div class="form-group">
+                <!--<div class="form-group">
                         <label for="users_id" class="col-sm-2 control-label">Usuario</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="users_id">
@@ -89,7 +89,7 @@
                             </select>
                             {{ ($errors->has('users_id')) ? $errors->first('users_id') : '' }}
                         </div>
-                    </div>
+                    </div>-->
 
               </div>
               <!-- /.box-body -->

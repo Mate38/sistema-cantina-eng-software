@@ -5,12 +5,11 @@
 @section('content_header')
     <section class="content-header">
       <h1>
-        Conta
+        Cadastro usuario
       </h1>
       <ol class="breadcrumb">
         <li><a href="home"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="clientes">Clientes</a></li>
-        <li class="active">Conta</li>
+        <li class="active">Cadastro usuario</li>
       </ol>
     </section>
 @stop
@@ -24,7 +23,7 @@
           <!-- general form elements -->
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">Conta do cliente</h3>
+              <h3 class="box-title">Cadastro de usuario</h3>
             </div>
             <!-- /.box-header -->
             <!--<p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>-->

@@ -73,7 +73,7 @@
                   </div>
                 </div>
 
-                <div class="form-group">
+                <!--<div class="form-group">
                   <label for="users_id" class="col-sm-2 control-label">Usuário</label>
                   <div class="col-sm-10">
                     <select class="form-control" name="users_id">
@@ -81,10 +81,10 @@
                         <option value="{{ $usuario->id }}" <?=( $usuario->id == $detailpage->users_id )?'selected':''?> >{{$usuario->name}}</option>
                       @endforeach
                     </select>
-                    <!--<input type="text" class="form-control" name="users_id" placeholder="">-->
+                    <!--<input type="text" class="form-control" name="users_id" placeholder="">--
                     {{ ($errors->has('users_id')) ? $errors->first('users_id') : '' }}
                   </div>
-                </div>
+                </div>-->
               <!-- /.box-body -->
 
               <div class="box-footer">
