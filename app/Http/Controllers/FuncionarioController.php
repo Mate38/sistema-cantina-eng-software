@@ -32,7 +32,6 @@ class FuncionarioController extends Controller
     {
         $this->validate($request, [
             'nome' => 'required',
-            'descricao' => 'required',
             'cpf' => 'required',
             'carteiraTrabalho' => 'required',
             'telefone' => 'required',
@@ -72,7 +71,6 @@ class FuncionarioController extends Controller
     {
         $this->validate($request, [
             'nome' => 'required',
-            'descricao' => 'required',
             'cpf' => 'required',
             'carteiraTrabalho' => 'required',
             'telefone' => 'required',

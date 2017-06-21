@@ -35,7 +35,6 @@ class ClienteController extends Controller
             'nome' => 'required',
             'cpf' => 'required',
             'telefone' => 'required',
-            'responsaveis_id' => 'required',
         ]);
         
         $clientes = new Cliente;
@@ -74,7 +73,6 @@ class ClienteController extends Controller
             'nome' => 'required',
             'cpf' => 'required',
             'telefone' => 'required',
-            'responsaveis_id' => 'required',
         ]);
 
         $responsaveis = Responsavel::all();
@@ -97,5 +95,25 @@ class ClienteController extends Controller
         $clientes = Cliente::find($id);
         $clientes->delete();
         return redirect('clientes');
+    }
+
+    public function conta($id)
+    {
+        $clientes = Cliente::find($id);
+
+        return view('clientes.conta')->with('detailpage', $clientes);
+    }
+
+    public function saldo(Request $request, $id)
+    {
+        $this->validate($request, [
+            'valorEntrada' => 'required',
+        ]);
+
+        $clientes = Cliente::find($id);
+
+        $clientes->valorDebitos = $clientes->valorDebitos - $request->valorEntrada;
+        $clientes->save();
+        return redirect('clientes')->with('message', 'Saldo atualizado com sucesso!');
     }
 }

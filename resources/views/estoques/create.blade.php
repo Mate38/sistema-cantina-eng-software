@@ -31,7 +31,7 @@
 
               <div class="box-body">
 
-              <div class="form-group">
+              <div class="form-group has-feedback {{ $errors->has('produtos_id') ? 'has-error' : '' }}">
                   <label for="produtos_id" class="col-sm-2 control-label">Produto</label>
                   <div class="col-sm-10">
                     <select class="form-control" name="produtos_id">
@@ -40,7 +40,6 @@
                         <option value="{{ $produto->id }}">{{$produto->nome}}</option>
                       @endforeach
                     </select>
-                    {{ ($errors->has('produtos_id')) ? $errors->first('produtos_id') : '' }}
                   </div>
                 </div>
 

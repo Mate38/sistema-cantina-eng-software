@@ -15,7 +15,7 @@ class CreateFkTable extends Migration
     {
         Schema::table('clientes', function(Blueprint $table)
         {
-            $table->integer('responsaveis_id')->unsigned();
+            $table->integer('responsaveis_id')->unsigned()->nullable();
             $table->foreign('responsaveis_id')->references('id')->on('responsaveis');
         });
 

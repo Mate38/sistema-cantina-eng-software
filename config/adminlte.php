@@ -109,11 +109,6 @@ return [
 
     'menu' => [
         'MENU PRINCIPAL',
-         [
-        'text' => 'Home',
-        'url' => '/home',
-        'icon' => 'home',
-        ],
         [
             'text' => 'Vendas',
             'url' => '/vendas',

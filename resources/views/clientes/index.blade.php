@@ -45,6 +45,7 @@
             <td>{{$cliente->telefone}}</td>
             <td>
               {!! Form::open(['url' => 'clientes/'.$cliente->id, 'method' => 'delete', 'class'=>'form-horizontal', 'id'=>"form_buttons"]) !!}
+                <a href="/clientes/{{ $cliente->id }}/conta" class="btn-sm bg-blue">Conta</a>
                 <a href="/clientes/{{ $cliente->id }}/edit" class="btn-sm bg-yellow">Editar</a>
                 @if(Auth::user()->nivel == 1)
                   <a href="#" class="btn-sm bg-red" onClick="document.getElementById('form_buttons').submit();">Excluir</a>

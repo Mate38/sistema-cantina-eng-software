@@ -42,6 +42,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('vendas/prazo', 'VendaController@prazo');
     //Route::get('vendas', 'VendaController@index');
 
+    Route::get('clientes/{id}/conta', 'ClienteController@conta');
+    Route::post('clientes/{id}/saldo', 'ClienteController@saldo');
+
     //Route::get('/produtos', 'ProdutoController@index');
     //Route::get('/produtos/novo', 'ProdutoController@create');
     //Route::post('/produtos/salvar', 'ProdutoController@store');
