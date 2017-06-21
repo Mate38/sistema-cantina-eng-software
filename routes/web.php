@@ -15,15 +15,15 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/teste', function () {
-    return view('produtos.teste');
-});
+/*Route::get('/teste', function () {
+    return view('teste');
+});*/
 
 Route::group(['middleware' => ['web']], function () {
     
     Auth::routes();
 
-    Route::get('/home', 'HomeController@index')->name('home');
+    //Route::get('/home', 'HomeController@index')->name('home');
 
     Route::resource('produtos', 'ProdutoController');
     Route::resource('fornecedores', 'FornecedorController');
