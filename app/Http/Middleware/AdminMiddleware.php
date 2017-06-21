@@ -17,7 +17,7 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
         if(Auth::user()->nivel != 1){
-            return redirect('/home');
+            return redirect('/vendas');
         }
         return $next($request);
     }

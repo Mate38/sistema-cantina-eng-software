@@ -19,13 +19,13 @@ class CreateFkTable extends Migration
             $table->foreign('responsaveis_id')->references('id')->on('responsaveis');
         });
 
-        Schema::table('vendas', function(Blueprint $table)
+        /*Schema::table('vendas', function(Blueprint $table)
         {
             $table->integer('clientes_id')->unsigned();
             $table->integer('users_id')->unsigned();
             $table->foreign('clientes_id')->references('id')->on('clientes');
             $table->foreign('users_id')->references('id')->on('users');
-        });
+        });*/
 
         Schema::table('vendas_has_produtos', function(Blueprint $table)
         {
@@ -41,10 +41,15 @@ class CreateFkTable extends Migration
             $table->foreign('fornecedores_id')->references('id')->on('fornecedores');
         });
 
-        Schema::table('funcionarios', function(Blueprint $table)
+        /*Schema::table('funcionarios', function(Blueprint $table)
         {
             $table->integer('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users');
+        });*/
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('funcionarios_id')->unsigned()->nullable();
+            $table->foreign('funcionarios_id')->references('id')->on('funcionarios');
         });
     }
 

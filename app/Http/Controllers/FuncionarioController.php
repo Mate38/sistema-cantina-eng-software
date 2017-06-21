@@ -36,7 +36,6 @@ class FuncionarioController extends Controller
             'carteiraTrabalho' => 'required',
             'telefone' => 'required',
             'celular' => 'required',
-            'users_id' => 'required',
         ]);
         
         $funcionarios = new Funcionario;
@@ -46,7 +45,6 @@ class FuncionarioController extends Controller
         $funcionarios->carteiraTrabalho = $request->carteiraTrabalho;
         $funcionarios->telefone = $request->telefone;
         $funcionarios->celular = $request->celular;
-        $funcionarios->users_id = $request->users_id;
         $funcionarios->save();
         return redirect('funcionarios')->with('message', 'Funcionario atualizado com sucesso!');
         
@@ -75,7 +73,6 @@ class FuncionarioController extends Controller
             'carteiraTrabalho' => 'required',
             'telefone' => 'required',
             'celular' => 'required',
-            'users_id' => 'required',
         ]);
         
         $funcionarios = Funcionario::find($id);
@@ -85,7 +82,6 @@ class FuncionarioController extends Controller
         $funcionarios->carteiraTrabalho = $request->carteiraTrabalho;
         $funcionarios->telefone = $request->telefone;
         $funcionarios->celular = $request->celular;
-        $funcionarios->users_id = $request->users_id;
         $funcionarios->save();
         return redirect('funcionarios')->with('message', 'Funcionario atualizado com sucesso!');
     }
