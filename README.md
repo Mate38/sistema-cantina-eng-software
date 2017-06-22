@@ -24,7 +24,7 @@ para
 
 ```.env```
 
-Dentro do arquivo .env edite os campos para que fique como demonstrado abaixo:
+Dentro do arquivo .env edite os campos para que fiquem como os demonstrados abaixo:
 
 ```DB_CONNECTION=mysql```
 
@@ -38,7 +38,7 @@ Dentro do arquivo .env edite os campos para que fique como demonstrado abaixo:
 
 ```DB_PASSWORD=1234```
 
-Obs: No lugar de "root" e "1234" coloque a o usuário e a senha atribuidos na instalação do seu MySQL.
+Obs: No lugar de "root" e "1234" coloque o usuário e a senha atribuidos na instalação do seu MySQL.
 
 Crie então uma nova chave para a aplicação com o comando:
 
@@ -50,7 +50,7 @@ Em seguida, no terminal aberto na pasta do projeto, execute o comando para cria�
 
 ```php artisan migrate```
 
-Pronto! Agora, executar o sistema, utilize o comando:
+Pronto! Agora, para executar o sistema, utilize o comando:
 
 ```php artisan serve```
 
@@ -65,4 +65,5 @@ ou então:
 Para logar no sistema utilize os dados de login abaixo:
 
 ```e-mail: admin@admin.com```
+
 ```senha: admin123```
