@@ -12,17 +12,57 @@ Esse projeto tem  por objetivo avaliar o processo de desenvolvimento de um softw
 ## Configuração
 ------------------------------
 
-Após clonar o projeto é necessário criar no MySQL um DB (banco de dados) com o nome de "cantinator" (sem as aspas).
+Após clonar o projeto, com o terminal aberto na pasta do projeto, execute o comando:
 
-Então com o terminal aberto na pasta do projeto, executar o comando:
+```composer install --no-scripts```
+
+Renomeie então o arquivo:
+
+```.env.example```
+
+para
+
+```.env```
+
+Dentro do arquivo .env edite os campos para que fique como demonstrado abaixo:
+
+```DB_CONNECTION=mysql```
+
+```DB_HOST=127.0.0.1```
+
+```DB_PORT=3306```
+
+```DB_DATABASE=cantinator```
+
+```DB_USERNAME=root```
+
+```DB_PASSWORD=1234```
+
+Obs: No lugar de "root" e "1234" coloque a o usuário e a senha atribuidos na instalação do seu MySQL.
+
+Crie então uma nova chave para a aplicação com o comando:
+
+```php artisan key:generate```
+
+Crie então no MySQL um BD (banco de dados) chamado "cantinator" (caso deseje utilizar outro nome modifique também no DB_DATABASE).
+
+Em seguida, no terminal aberto na pasta do projeto, execute o comando para criação das tabelas:
 
 ```php artisan migrate```
 
-Para executar o projeto, utilize o comando:
+Pronto! Agora, executar o sistema, utilize o comando:
 
 ```php artisan serve```
 
-Para acessar o sistema utilize os dados de login abaixo:
+No navegador pode acessar o sistema através do endereço:
+
+```http://127.0.0.1:8000```
+
+ou então:
+
+```localhost:8000```
+
+Para logar no sistema utilize os dados de login abaixo:
 
 ```e-mail: admin@admin.com```
 ```senha: admin123```
